@@ -18,9 +18,9 @@ class UsuarioController extends Controller
     public function index()
     {
         //
-        $usuarios = Usuario::all();
-        dd("si paso");
-        return view('auth.users.index',["usuarios"=>$usuarios]);
+        //$usuarios = User::all();
+        //dd("si paso");
+        //return view('auth.users.index',["usuarios"=>$usuarios]);
     }
 
     /**
