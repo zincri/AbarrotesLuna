@@ -18,7 +18,7 @@ class ProductoController extends Controller
     public function index()
     {
         $datos = User::all();
-        dd($datos);
+        return view('productos.index', ['datos' => $datos]);
     }
 
     /**
