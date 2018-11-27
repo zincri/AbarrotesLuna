@@ -21,4 +21,5 @@ Route::get('/', function() { //ruta login
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/usuarios','UsuariosController');
+//Route::resource('/usuarios','UsuariosController');
+Route::resource('/productos','ProductoController');

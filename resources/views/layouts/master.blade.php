@@ -86,7 +86,7 @@
                         <a href="#"><span class="fa fa-sort-desc"></span> <span class="xn-text">Productos</span></a>
                          <ul>
                             <li><a href="{{  url('administrador/categorias')  }}"><span class="fa fa-image"></span> Categorias</a></li>
-                            <li><a href="{{  url('administrador/productos')  }}"><span class="fa fa-image"></span> Productos</a></li>
+                            <li><a href="{{  url('productos')  }}"><span class="fa fa-image"></span> Productos</a></li>
 
                                                              
                         </ul>

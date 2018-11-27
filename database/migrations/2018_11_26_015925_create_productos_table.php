@@ -15,14 +15,20 @@ class CreateProductosTable extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->integer('activo');
-            $table->string('email',50)->unique();
+            $table->decimal('costo', 8, 2);
+            $table->string('descripcion',1000);
+            $table->integer('existencia');
+            $table->date('fecha_caducidad');
             $table->increments('id');
             $table->string('imagen',500);
             $table->string('nombre',50);
-            $table->string('password');
-            $table->string('telefono',30)->nullable();
-            $table->string('usuario',50)->nullable();
+            $table->decimal('precio', 8, 2);
+            $table->integer('tipo_producto');
+            $table->integer('proveedor');
             $table->timestamps();
+
+            $table->foreign('tipo_producto')->references('id')->on('tipo_productos');
+            $table->foreign('proveedor')->references('id')->on('proveedors');
         });
     }
 
