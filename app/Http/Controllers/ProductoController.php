@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+
+
 class ProductoController extends Controller
 {
     public function __construct()
@@ -29,6 +31,8 @@ class ProductoController extends Controller
     public function create()
     {
         //
+        $combo=DB::table('tbl_categoriaproducto')->where('activo','=',1)->get();
+        return view('content.productos.create',['combo' => $combo]);
     }
 
     /**

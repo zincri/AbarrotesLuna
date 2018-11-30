@@ -62,30 +62,10 @@
                         </div>                                                                        
                     </li>
                     <li class="xn-title">Menu de opciones</li>
-                                       
-                    <li class="xn-openable">
-                        <a href="#"><span class="fa fa-sort-desc"></span> <span class="xn-text">Informacion</span></a>
-                        <ul>
-                            <li><a href="{{  url('administrador/informacion')  }}"><span class="fa fa-image"></span> Informacion General</a></li>
-                            <li><a href="{{  url('administrador/listaservicios')  }}"><span class="fa fa-image"></span> Lista de servicios</a></li>
-                            <li><a href="{{  url('administrador/listavideos')  }}"><span class="fa fa-image"></span> Lista de videos</a></li>
-                            <li><a href="{{  url('administrador/slider')  }}"><span class="fa fa-image"></span> Presentaciones de inicio</a></li>
-                            <li><a href="{{  url('administrador/proyectos')  }}"><span class="fa fa-image"></span> Proyectos realizados</a></li>
-                            <li><a href="{{  url('administrador/infoASC')  }}"><span class="fa fa-image"></span> Arrendamiento, Soporte y Consumibles</a></li>
-                        </ul>
-                    </li>
-                    <li class="xn-openable">
-                        <a href="#"><span class="fa fa-sort-desc"></span> <span class="xn-text">Noticias</span></a>
-                        <ul>
-                            <li><a href="{{  url('administrador/noticias')  }}"><span class="fa fa-image"></span> Ver Noticias</a></li>
-                        </ul>
-                    </li>
-                    
-                    
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-sort-desc"></span> <span class="xn-text">Productos</span></a>
                          <ul>
-                            <li><a href="{{  url('administrador/categorias')  }}"><span class="fa fa-image"></span> Categorias</a></li>
+                            <li><a href="{{  url('tipo_producto')  }}"><span class="fa fa-image"></span> Tipo Producto</a></li>
                             <li><a href="{{  url('productos')  }}"><span class="fa fa-image"></span> Productos</a></li>
 
                                                              

@@ -21,5 +21,6 @@ Route::get('/', function() { //ruta login
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-//Route::resource('/usuarios','UsuariosController');
+//Route::resource('/usuarios','UsuariosController'); //Falta este modulo
 Route::resource('/productos','ProductoController');
+Route::resource('/tipo_producto','TipoProductoController');
