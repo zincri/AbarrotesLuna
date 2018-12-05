@@ -18,11 +18,15 @@ class CreateProductoPorVentasTable extends Migration
             $table->increments('id');
             $table->integer('producto');
             $table->integer('venta');
+            $table->integer('usuario_ins');
+            $table->integer('usuario_upd');
             $table->timestamps();
 
 
             $table->foreign('producto')->references('id')->on('productos');
             $table->foreign('venta')->references('id')->on('ventas');
+            $table->foreign('usuario_ins')->references('id')->on('users');
+            $table->foreign('usuario_upd')->references('id')->on('users');
         });
     }
 

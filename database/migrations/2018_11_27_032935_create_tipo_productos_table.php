@@ -18,7 +18,12 @@ class CreateTipoProductosTable extends Migration
             $table->string('descripcion',1000);
             $table->increments('id');
             $table->string('nombre',50);
+            $table->integer('usuario_ins');
+            $table->integer('usuario_upd');
             $table->timestamps();
+
+            $table->foreign('usuario_ins')->references('id')->on('users');
+            $table->foreign('usuario_upd')->references('id')->on('users');
         });
     }
 

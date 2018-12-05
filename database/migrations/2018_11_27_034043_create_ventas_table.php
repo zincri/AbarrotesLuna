@@ -17,7 +17,12 @@ class CreateVentasTable extends Migration
             $table->integer('activo');
             $table->increments('id');
             $table->decimal('total', 8, 2);
+            $table->integer('usuario_ins');
+            $table->integer('usuario_upd');
             $table->timestamps();
+
+            $table->foreign('usuario_ins')->references('id')->on('users');
+            $table->foreign('usuario_upd')->references('id')->on('users');
         });
     }
 

@@ -72,27 +72,19 @@
                         </ul>
                     </li>
                     <li class="xn-openable">
-                        <a href="#"><span class="fa fa-sort-desc"></span> <span class="xn-text">Promociones</span></a>
+                        <a href="#"><span class="fa fa-sort-desc"></span> <span class="xn-text">Proveedores</span></a>
                          <ul>
-                            <li><a href="{{ url('administrador/promociones') }}"><span class="fa fa-image"></span> Lista de promociones</a></li>
+                            <li><a href="{{ url('proveedores') }}"><span class="fa fa-image"></span> Lista de proveedores</a></li>
                                                              
                         </ul>
                     </li>     
                     <li class="xn-openable">
-                        <a href="#"><span class="fa fa-sort-desc"></span> <span class="xn-text">Marcas</span></a>
+                        <a href="#"><span class="fa fa-sort-desc"></span> <span class="xn-text">Ventas</span></a>
                          <ul>
-                            <li><a href="{{  url('administrador/marcas')  }}"><span class="fa fa-image"></span> Nuestras marcas</a></li>
+                            <li><a href="{{  url('ventas')  }}"><span class="fa fa-image"></span> Ventas registradas</a></li>
                                                              
                         </ul>
-                    </li>               
-                    <li class="xn-openable">
-                        <a href="#"><span class="fa fa-sort-desc"></span> <span class="xn-text">Sucursales</span></a>
-                         <ul>
-                            <li><a href="{{  url('administrador/sucursales')  }}"><span class="fa fa-image"></span> Nuestras sucursales</a></li>
-                                                         
-                        </ul>
                     </li>
-
                     
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-sort-desc"></span> <span class="xn-text">Usuarios</span></a>

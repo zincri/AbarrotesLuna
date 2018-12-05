@@ -47,6 +47,7 @@ class TipoProductoController extends Controller
         ]);
 
         $activo=(int)1;
+        $usuario=Auth::user()->id;
         //$nombre=$request->get('nombre');
         //$descripcion=$request->get('descripcion');
         /*
@@ -59,6 +60,8 @@ class TipoProductoController extends Controller
         $tipo_producto->activo = $activo;
         $tipo_producto->descripcion = $request->get('descripcion');
         $tipo_producto->nombre = $request->get('nombre');
+        $tipo_producto->usuario_ins = $usuario;
+        $tipo_producto->usuario_upd = $usuario;
         $tipo_producto->save();
         return Redirect::to('/tipo_producto');
     }
@@ -105,11 +108,13 @@ class TipoProductoController extends Controller
             'descripcion' => 'required|string|max:999'
         ]);
         $tipo_producto =  TipoProducto::findOrFail($id);
+        $usuario=Auth::user()->id;
         if($tipo_producto==null){
-            return Redirect::to('/tipo_producto');
+            return Redirect::to('tipo_producto')->withErrors(['erroregistro'=> 'Error']);
         }
         $tipo_producto->descripcion = $request->get('descripcion');
         $tipo_producto->nombre = $request->get('nombre');
+        $tipo_producto->usuario_upd = $usuario;
         $tipo_producto->update();
         return Redirect::to('/tipo_producto');
         
@@ -124,10 +129,12 @@ class TipoProductoController extends Controller
     public function destroy($id)
     {
         $tipo_producto =  TipoProducto::findOrFail($id);
+        $usuario=Auth::user()->id;
         if($tipo_producto==null){
-            return Redirect::to('/tipo_producto');
+            return Redirect::to('tipo_producto')->withErrors(['erroregistro'=> 'Error']);
         }
         $tipo_producto->activo = 0;
+        $tipo_producto->usuario_upd = $usuario;
         $tipo_producto->update();
         return Redirect::to('/tipo_producto');
     }

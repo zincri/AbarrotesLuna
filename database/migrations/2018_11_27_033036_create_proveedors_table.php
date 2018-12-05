@@ -19,7 +19,12 @@ class CreateProveedorsTable extends Migration
             $table->increments('id');
             $table->string('nombre',50);
             $table->string('telefono',30);
+            $table->integer('usuario_ins');
+            $table->integer('usuario_upd');
             $table->timestamps();
+
+            $table->foreign('usuario_ins')->references('id')->on('users');
+            $table->foreign('usuario_upd')->references('id')->on('users');
         });
     }
 

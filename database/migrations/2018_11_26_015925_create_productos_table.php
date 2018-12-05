@@ -23,12 +23,16 @@ class CreateProductosTable extends Migration
             $table->string('imagen',500);
             $table->string('nombre',50);
             $table->decimal('precio', 8, 2);
-            $table->integer('tipo_producto');
             $table->integer('proveedor');
+            $table->integer('tipo_producto');
+            $table->integer('usuario_ins');
+            $table->integer('usuario_upd');
             $table->timestamps();
 
             $table->foreign('tipo_producto')->references('id')->on('tipo_productos');
             $table->foreign('proveedor')->references('id')->on('proveedors');
+            $table->foreign('usuario_ins')->references('id')->on('users');
+            $table->foreign('usuario_upd')->references('id')->on('users');
         });
     }
 
