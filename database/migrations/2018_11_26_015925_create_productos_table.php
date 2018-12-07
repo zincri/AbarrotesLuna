@@ -14,19 +14,19 @@ class CreateProductosTable extends Migration
     public function up()
     {
         Schema::create('productos', function (Blueprint $table) {
-            $table->integer('activo');
-            $table->decimal('costo', 8, 2);
-            $table->string('descripcion',1000);
-            $table->integer('existencia');
+            $table->integer('activo');//
+            $table->decimal('costo', 8, 2);//
+            $table->string('descripcion',1000);//
+            $table->integer('existencia');//stock
             $table->date('fecha_caducidad');
-            $table->increments('id');
+            $table->increments('id');//
             $table->string('imagen',500);
-            $table->string('nombre',50);
-            $table->decimal('precio', 8, 2);
-            $table->integer('proveedor');
-            $table->integer('tipo_producto');
-            $table->integer('usuario_ins');
-            $table->integer('usuario_upd');
+            $table->string('nombre',50);//
+            $table->decimal('precio', 8, 2);//
+            $table->integer('proveedor');//
+            $table->integer('tipo_producto');//
+            $table->integer('usuario_ins');//
+            $table->integer('usuario_upd');//
             $table->timestamps();
 
             $table->foreign('tipo_producto')->references('id')->on('tipo_productos');

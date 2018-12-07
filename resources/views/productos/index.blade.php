@@ -21,16 +21,13 @@
         <tbody>
             @foreach($datos as $item)
             <tr>
-                <td>{{$item->usuario}}</td>
-                <td>{{$item->usuario}}</td>
+                <td>{{$item->nombre}}</td>
+                <td>{{$item->tipo}}</td>
                 <td>
                     <a href="{{URL::action('ProductoController@show',$item->id)}}"><button class="btn btn-info"><i
                                 class="fa fa-eye"></i></button></a>
                     &nbsp;
-                    <a href="{{ url('administrador/galeria/producto', $item->id) }}"><button class="btn btn-success"><i
-                                class="fa fa-image"></i></button></a>
-                    &nbsp;
-                    <a href="{{URL::action('ProductoController@edit',$item->id)}}"><button class="btn btn-warning"><i
+                     <a href="{{URL::action('ProductoController@edit',$item->id)}}"><button class="btn btn-warning"><i
                                 class="fa fa-edit"></i></button></a>
                     &nbsp;
                     <a href="" data-target="#message-box-danger-{{$item->id}}" data-toggle="modal"><button class="btn btn-danger"><i

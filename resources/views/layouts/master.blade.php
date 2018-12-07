@@ -2,7 +2,7 @@
 <html lang="en">
     <head>        
             <!-- META SECTION -->
-            <title>Torres Batiz</title>            
+            <title>Abarrotes Luna</title>            
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -41,7 +41,7 @@
                 <ul class="x-navigation">
                     <li class="xn-logo">
                         <a href="home">Abarrotes Luna</a>
-                        <a href="#" class="x-navigation-control"></a>
+                        <a href="/" class="x-navigation-control"></a>
                     </li>
                     <li class="xn-profile">
                         <a href="#" class="profile-mini">
@@ -195,7 +195,7 @@
                         <div class="col-md-12">
                             <div class="panel panel-default">
                                     <div class="panel-heading">                                
-                                        <h3 class="panel-title">Torres Batiz</h3>
+                                        <h3 class="panel-title">Abarrotes Luna</h3>
                                         <ul class="panel-controls">
                                         <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
                                         <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
