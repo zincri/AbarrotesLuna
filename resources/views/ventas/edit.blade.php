@@ -1,12 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
-{!!Form::open(array('url'=>'productos','method'=>'POST','autocomplete'=>'off','files' => 'true'))!!}
+{!!Form::model($datos,array('method'=>'PATCH','action'=>['VentasController@update',$datos->id],'files' => 'true'))!!} 
 {{Form::token()}}
                 <div class="form-horizontal">
                 <div class="panel panel-default">
-                                
-                               
                                 <div class="panel-body">                                                                        
                                     
                                     <div class="form-group {{$errors->has('nombre') ? 'has-error':''}}">
@@ -14,7 +12,7 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name="nombre" value="{{old('nombre')}}"/>
+                                                <input type="text" class="form-control" name="nombre" value="{{$datos->nombre}}"/>
                                             </div>                                            
                                             {!! $errors->first('nombre','<span class="help-block">:message</span>')!!}
                                             
@@ -25,9 +23,9 @@
                                         <label class="col-md-3 col-xs-12 control-label">Tipo de producto</label>
                                         <div class="col-md-6 col-xs-12">                                                                                            
                                             <select class="form-control" name="tipo">
-                                            <option value=""> SELECCIONA UN TIPO</option>
-                                                @foreach($tipos as $item)
-                                                    @if(old('tipo') == $item->id)
+                                            <option value=""> SELECCIONA UN TIPO </option>
+                                                @foreach($combotipos as $item)
+                                                    @if($datos->tipo_producto == $item->id)
                                                         <option value="{{$item->id}}" selected>{{$item->nombre}}</option>
                                                     @else
                                                         <option value="{{$item->id}}">{{$item->nombre}}</option>
@@ -43,8 +41,8 @@
                                         <div class="col-md-6 col-xs-12">                                                                                            
                                             <select class="form-control" name="proveedor">
                                             <option value=""> SELECCIONA UN PROVEEDOR </option>
-                                                @foreach($proveedores as $item)
-                                                    @if(old('proveedor') == $item->id)
+                                                @foreach($comboproveedores as $item)
+                                                    @if($datos->proveedor == $item->id)
                                                         <option value="{{$item->id}}" selected>{{$item->nombre}}</option>
                                                     @else
                                                         <option value="{{$item->id}}">{{$item->nombre}}</option>
@@ -58,7 +56,7 @@
                                     <div class="form-group {{$errors->has('descripcion') ? 'has-error':''}}">
                                         <label class="col-md-3 col-xs-12 control-label">Descripcion</label>
                                         <div class="col-md-6 col-xs-12">                                            
-                                            <textarea class="form-control" rows="5" cols="50" name="descripcion">{{old('descripcion')}}</textarea>
+                                            <textarea class="form-control" rows="5" name="descripcion">{{$datos->descripcion}}</textarea>
                                             {!! $errors->first('descripcion','<span class="help-block">:message</span>')!!}
                                         </div>
                                         
@@ -69,7 +67,7 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name="costo" value="{{old('costo')}}"/>
+                                                <input type="text" class="form-control" name="costo" value="{{$datos->costo}}"/>
                                             </div>                                            
                                             {!! $errors->first('costo','<span class="help-block">:message</span>')!!}
                                             
@@ -81,7 +79,7 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name="precio" value="{{old('precio')}}"/>
+                                                <input type="text" class="form-control" name="precio" value="{{$datos->precio}}"/>
                                             </div>                                            
                                             {!! $errors->first('precio','<span class="help-block">:message</span>')!!}
                                             
@@ -93,7 +91,7 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name="existencia" value="{{old('existencia')}}"/>
+                                                <input type="text" class="form-control" name="existencia" value="{{$datos->existencia}}"/>
                                             </div>                                            
                                             {!! $errors->first('existencia','<span class="help-block">:message</span>')!!}
                                             
@@ -105,13 +103,12 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon add-on"><span class="fa fa-calendar"></span></span>
-                                                <input type="text" name="fecha_caducidad" class="form-control datepicker" value="2018-12-07"/>                                                
+                                                <input type="text" name="fecha_caducidad" class="form-control datepicker" value="{{$datos->fecha_caducidad}}"/>                                                
                                             </div>                                             
                                             {!! $errors->first('fecha_caducidad','<span class="help-block">:message</span>')!!}
                                             
                                         </div>
                                     </div>
-
 
                                     <div class="form-group {{$errors->has('file') ? 'has-error':''}}">
                                         <label class="col-md-3 col-xs-12 control-label">Imagen</label>
@@ -126,7 +123,7 @@
                                     </div>
                             
                                 </div>
-                                <div class="panel-footer">                                  
+                                <div class="panel-footer">
                                     <button class="btn btn-primary pull-right" type="submit">Guardar</button>
                                 </div>
                  </div>

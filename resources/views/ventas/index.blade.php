@@ -8,13 +8,12 @@
 </div>
 ')!!}
 <!-- START DEFAULT DATATABLE -->
-<a href="{{URL::action('ProductoController@create')}}"><button class="btn btn-primary">Nuevo producto<span class="fa fa-plus-circle fa-4x fa-fw"></span></button></a>
+<a href="{{URL::action('VentasController@create')}}"><button class="btn btn-primary">Nueva venta<span class="fa fa-plus-circle fa-4x fa-fw"></span></button></a>
 <div class="panel-body table-responsive">
     <table class="table datatable">
         <thead>
             <tr>
-                <th>Producto</th>
-                <th>Categoria</th>
+                <th>Venta</th>
                 <th>Fecha</th>
                 <th>Acciones</th>
             </tr>
@@ -22,20 +21,19 @@
         <tbody>
             @foreach($datos as $item)
             <tr>
-                <td>{{$item->nombre}}</td>
-                <td>{{$item->tipo}}</td>
+                <td>{{$item->venta}}</td>
                 <td>{{$item->fecha}}</td>
                 <td>
-                    <a href="{{URL::action('ProductoController@show',$item->id)}}"><button class="btn btn-info"><i
+                    <a href="{{URL::action('VentasController@show',$item->id)}}"><button class="btn btn-info"><i
                                 class="fa fa-eye"></i></button></a>
                     &nbsp;
-                     <a href="{{URL::action('ProductoController@edit',$item->id)}}"><button class="btn btn-warning"><i
+                     <a href="{{URL::action('VentasController@edit',$item->id)}}"><button class="btn btn-warning"><i
                                 class="fa fa-edit"></i></button></a>
                     &nbsp;
                     <a href="" data-target="#message-box-danger-{{$item->id}}" data-toggle="modal"><button class="btn btn-danger"><i
                                 class="fa fa-trash-o"></i></button></a>
                 </td>
-                @include('productos.delete')
+                @include('ventas.delete')
             </tr>
             @endforeach
 

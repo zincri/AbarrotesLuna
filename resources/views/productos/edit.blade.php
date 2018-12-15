@@ -7,61 +7,105 @@
                 <div class="panel panel-default">
                                 <div class="panel-body">                                                                        
                                     
-                                    <div class="form-group {{$errors->has('nombreproducto') ? 'has-error':''}}">
+                                    <div class="form-group {{$errors->has('nombre') ? 'has-error':''}}">
                                         <label class="col-md-3 col-xs-12 control-label">Nombre del producto</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name="nombreproducto" value="{{$datos->nombre}}"/>
+                                                <input type="text" class="form-control" name="nombre" value="{{$datos->nombre}}"/>
                                             </div>                                            
-                                            {!! $errors->first('nombreproducto','<span class="help-block">:message</span>')!!}
+                                            {!! $errors->first('nombre','<span class="help-block">:message</span>')!!}
                                             
                                         </div>
                                     </div>
 
-                                    <div class="form-group {{$errors->has('categoriaproducto') ? 'has-error':''}}">
-                                        <label class="col-md-3 col-xs-12 control-label">Categoria del producto</label>
+                                    <div class="form-group {{$errors->has('tipo') ? 'has-error':''}}">
+                                        <label class="col-md-3 col-xs-12 control-label">Tipo de producto</label>
                                         <div class="col-md-6 col-xs-12">                                                                                            
-                                            <select class="form-control" name="categoriaproducto">
-                                            <option value=""> SELECCIONA UNA CATEGORIA </option>
-                                                @foreach($combo as $item)
-                                                    @if($datos->idcategoriaproducto == $item->id)
+                                            <select class="form-control" name="tipo">
+                                            <option value=""> SELECCIONA UN TIPO </option>
+                                                @foreach($combotipos as $item)
+                                                    @if($datos->tipo_producto == $item->id)
                                                         <option value="{{$item->id}}" selected>{{$item->nombre}}</option>
                                                     @else
                                                         <option value="{{$item->id}}">{{$item->nombre}}</option>
                                                     @endif
                                                 @endforeach   
                                             </select>
-                                            {!! $errors->first('categoriaproducto','<span class="help-block">:message</span>')!!}
+                                            {!! $errors->first('tipo','<span class="help-block">:message</span>')!!}
                                         </div>
                                     </div>
 
-                                    <div class="form-group {{$errors->has('descripcionlarga') ? 'has-error':''}}">
-                                        <label class="col-md-3 col-xs-12 control-label">Descripcion larga</label>
+                                    <div class="form-group {{$errors->has('proveedor') ? 'has-error':''}}">
+                                        <label class="col-md-3 col-xs-12 control-label">Proveedor del producto</label>
+                                        <div class="col-md-6 col-xs-12">                                                                                            
+                                            <select class="form-control" name="proveedor">
+                                            <option value=""> SELECCIONA UN PROVEEDOR </option>
+                                                @foreach($comboproveedores as $item)
+                                                    @if($datos->proveedor == $item->id)
+                                                        <option value="{{$item->id}}" selected>{{$item->nombre}}</option>
+                                                    @else
+                                                        <option value="{{$item->id}}">{{$item->nombre}}</option>
+                                                    @endif
+                                                @endforeach   
+                                            </select>
+                                            {!! $errors->first('proveedor','<span class="help-block">:message</span>')!!}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group {{$errors->has('descripcion') ? 'has-error':''}}">
+                                        <label class="col-md-3 col-xs-12 control-label">Descripcion</label>
                                         <div class="col-md-6 col-xs-12">                                            
-                                            <textarea class="form-control" rows="5" name="descripcionlarga">{{$datos->descripcionlarga}}</textarea>
-                                            {!! $errors->first('descripcionlarga','<span class="help-block">:message</span>')!!}
+                                            <textarea class="form-control" rows="5" name="descripcion">{{$datos->descripcion}}</textarea>
+                                            {!! $errors->first('descripcion','<span class="help-block">:message</span>')!!}
                                         </div>
                                         
                                     </div>
 
-                                    <div class="form-group {{$errors->has('descripcioncorta') ? 'has-error':''}}">
-                                        <label class="col-md-3 col-xs-12 control-label">Descripcion corta</label>
+                                    <div class="form-group {{$errors->has('costo') ? 'has-error':''}}">
+                                        <label class="col-md-3 col-xs-12 control-label">Costo</label>
                                         <div class="col-md-6 col-xs-12">                                            
-                                            <textarea class="form-control" rows="5" name="descripcioncorta">{{$datos->descripcioncorta}}</textarea>
-                                            {!! $errors->first('descripcioncorta','<span class="help-block">:message</span>')!!}
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" class="form-control" name="costo" value="{{$datos->costo}}"/>
+                                            </div>                                            
+                                            {!! $errors->first('costo','<span class="help-block">:message</span>')!!}
+                                            
                                         </div>
-                                        
                                     </div>
 
-                                    <div class="form-group {{$errors->has('stock') ? 'has-error':''}}">
+                                    <div class="form-group {{$errors->has('precio') ? 'has-error':''}}">
+                                        <label class="col-md-3 col-xs-12 control-label">Precio</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" class="form-control" name="precio" value="{{$datos->precio}}"/>
+                                            </div>                                            
+                                            {!! $errors->first('precio','<span class="help-block">:message</span>')!!}
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group {{$errors->has('existencia') ? 'has-error':''}}">
                                         <label class="col-md-3 col-xs-12 control-label">Stock</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name="stock" value="{{$datos->stock}}"/>
+                                                <input type="text" class="form-control" name="existencia" value="{{$datos->existencia}}"/>
                                             </div>                                            
-                                            {!! $errors->first('stock','<span class="help-block">:message</span>')!!}
+                                            {!! $errors->first('existencia','<span class="help-block">:message</span>')!!}
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group {{$errors->has('fecha_caducidad') ? 'has-error':''}}">
+                                        <label class="col-md-3 col-xs-12 control-label">Fecha de caducidad</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon add-on"><span class="fa fa-calendar"></span></span>
+                                                <input type="text" name="fecha_caducidad" class="form-control datepicker" value="{{$datos->fecha_caducidad}}"/>                                                
+                                            </div>                                             
+                                            {!! $errors->first('fecha_caducidad','<span class="help-block">:message</span>')!!}
                                             
                                         </div>
                                     </div>

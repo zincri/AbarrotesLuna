@@ -7,7 +7,7 @@
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             
-            <link rel="icon" href="{{ asset('favicon.ico')}}" type="image/x-icon" />
+            <link rel="icon" href="{{ asset('icoluna.jpeg')}}" type="image/x-icon" />
             <!-- END META SECTION -->
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
             <!-- CSS INCLUDE -->        
@@ -25,7 +25,7 @@
 		.oculto ul {display:inline;float:left;width:100%;margin:0;padding:0}
 			.oculto ul li {margin:0;padding:0;display:block;width:30px;height:30px;text-align:center;font-size:15px;font-family:"fontawesome";float:left;cursor:pointer;color:#666;line-height:30px;transition:0.2s all}
 			.oculto ul li:hover {background:#FFF;color:#000}
-		.oculto input[type=text] { font-size:13px;padding:5px;margin:0 0 10px 0;border:1px solid #ddd; }
+		.oculto input[type=text] { font-size:10px;padding:5px;margin:0 0 10px 0;border:1px solid #ddd; }
 	
 </style>                              
     </head>
@@ -45,11 +45,11 @@
                     </li>
                     <li class="xn-profile">
                         <a href="#" class="profile-mini">
-                            <img src="{{asset('images/logoal.png')}}" alt="Abarrotes Luna"/>
+                            <img src="{{asset('images/icoluna.jpeg')}}" alt="Abarrotes Luna"/>
                         </a>
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="{{asset('images/logoal.png')}}" alt="Abarrotes Luna"/>
+                                <img src="{{asset('images/icoluna.jpeg')}}" alt="Abarrotes Luna"/>
                             </div>
                             <div class="profile-data">
                                 <div class="profile-data-name">{{ Auth::user()->name }}</div>

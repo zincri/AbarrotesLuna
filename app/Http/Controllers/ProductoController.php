@@ -30,9 +30,11 @@ class ProductoController extends Controller
         DB::table('productos')
         ->select('productos.nombre as nombre',
                  'productos.id as id',
-                 'tipo_productos.nombre as tipo')
+                 'tipo_productos.nombre as tipo',
+                 'productos.fecha_caducidad as fecha')
         ->join('tipo_productos', 'productos.tipo_producto', '=', 'tipo_productos.id')
-        ->where('productos.activo','=',1)->where('tipo_productos.activo','=',1)->get();
+        ->where('productos.activo','=',1)->where('tipo_productos.activo','=',1)
+        ->orderBy('fecha_caducidad','desc')->get();
        return view('productos.index', ['datos' => $datos]);
     }
 
@@ -74,7 +76,7 @@ class ProductoController extends Controller
             $descripcion=$request->get('descripcion');
             $tipo=(int)$request->get('tipo');
             $proveedor=(int)$request->get('proveedor');
-            $usuario=Auth::user()->id;
+            //$usuario=Auth::user()->id;
             $path= Storage::disk('public')->put('imageupload/productos/principales', $request->file('file'));
             $imagen=asset($path);
             $costo=$request->get('costo');
@@ -139,7 +141,14 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $combotipos=DB::table('tipo_productos')->where('activo','=',1)->get();
+        $comboproveedores=DB::table('proveedors')->where('activo','=',1)->get();
+        /**/
+        $datos = DB::table('productos')->where('id','=',$id)->where('activo','=',1)->first();
+        if($datos==null){
+            return Redirect::to('productos')->withErrors(['erroregistro'=> 'Error']);
+        }
+        return view('productos.edit',['combotipos' => $combotipos, 'comboproveedores' => $comboproveedores, 'datos'=>$datos]);
     }
 
     /**
@@ -151,7 +160,85 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $credentials=$this->validate(request(),[
+            'nombre' => 'required|string|max:49',
+            'descripcion' => 'required|string|max:999',
+            'tipo' => 'required',
+            'proveedor' => 'required',
+            'costo' => 'required|numeric',
+            'precio' => 'required|numeric',
+            'existencia' => 'required|integer',
+            'fecha_caducidad' => 'required|date',
+            //'file'=>'required|mimes:jpg,jpeg,png|max:500'
+        ]);
+        $producto =  Producto::findOrFail($id);
+
+        if($request->file('file')){
+            $this->validate(request(),[
+                'file'=>'required|mimes:jpg,jpeg,png|max:5000'
+            ]);
+            //$activo=(int)1;
+            $usuario=Auth::user()->id;
+            $nombre=$request->get('nombre');
+            $descripcion=$request->get('descripcion');
+            $tipo=(int)$request->get('tipo');
+            $proveedor=(int)$request->get('proveedor');
+            //$usuario=Auth::user()->id;
+            $path= Storage::disk('public')->put('imageupload/productos/principales', $request->file('file'));
+            $imagen=asset($path);
+            $costo=$request->get('costo');
+            $precio=$request->get('precio');
+            $existencia=$request->get('existencia');
+            $fecha_caducidad=$request->get('fecha_caducidad');
+
+            
+            
+            $producto->costo = $costo;
+            $producto->descripcion = $descripcion;
+            $producto->existencia = $existencia;
+            $producto->fecha_caducidad = $fecha_caducidad;
+            $producto->imagen = $imagen;
+            $producto->nombre = $nombre;
+            $producto->precio = $precio;
+            $producto->proveedor = $proveedor; 
+            $producto->tipo_producto = $tipo;
+            $producto->usuario_upd = $usuario;
+            $producto->update();
+            return Redirect::to('productos');
+
+        }
+        else{
+            $usuario=Auth::user()->id;
+            $nombre=$request->get('nombre');
+            $descripcion=$request->get('descripcion');
+            $tipo=(int)$request->get('tipo');
+            $proveedor=(int)$request->get('proveedor');
+            //$usuario=Auth::user()->id;
+            //$path= Storage::disk('public')->put('imageupload/productos/principales', $request->file('file'));
+            //$imagen=asset($path);
+            $costo=$request->get('costo');
+            $precio=$request->get('precio');
+            $existencia=$request->get('existencia');
+            $fecha_caducidad=$request->get('fecha_caducidad');
+
+            
+            
+            $producto->costo = $costo;
+            $producto->descripcion = $descripcion;
+            $producto->existencia = $existencia;
+            $producto->fecha_caducidad = $fecha_caducidad;
+            //$producto->imagen = $imagen;
+            $producto->nombre = $nombre;
+            $producto->precio = $precio;
+            $producto->proveedor = $proveedor; 
+            $producto->tipo_producto = $tipo;
+            $producto->usuario_upd = $usuario;
+            $producto->update();
+            return Redirect::to('productos');
+            
+        }
+
+        
     }
 
     /**
@@ -162,6 +249,11 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $activo=(int)0;
+        $producto =  Producto::findOrFail($id);
+        $producto->activo = $activo;
+        $producto->update();
+        return Redirect::to('productos');
+
     }
 }

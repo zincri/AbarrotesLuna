@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-{!!Form::open(array('url'=>'productos','method'=>'POST','autocomplete'=>'off','files' => 'true'))!!}
+{!!Form::open(array('url'=>'ventas','method'=>'POST','autocomplete'=>'off','files' => 'true'))!!}
 {{Form::token()}}
                 <div class="form-horizontal">
                 <div class="panel panel-default">

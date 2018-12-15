@@ -26,3 +26,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/productos','ProductoController');
 Route::resource('/tipo_producto','TipoProductoController');
 Route::resource('/proveedores','ProveedoresController');
+Route::resource('/ventas','VentasController');
